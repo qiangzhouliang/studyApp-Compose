@@ -1,6 +1,7 @@
 package com.swan.studyapp.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
@@ -17,9 +18,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.accompanist.insets.ProvideWindowInsets
 import com.swan.studyapp.model.entity.NavigationItem
+import com.swan.studyapp.ui.theme.contentColor
+import com.swan.studyapp.ui.theme.Blue700
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -32,35 +37,45 @@ fun MainFrame() {
     )
     var currentNavigationIndex by remember { mutableStateOf(0) }
 
-    Scaffold(
-        bottomBar = {
-            NavigationBar(containerColor = Color.White) {
-                navigationItems.forEachIndexed { index, navigationItem ->
-                    NavigationBarItem(
-                        selected = currentNavigationIndex == index,
-                        onClick = {
-                            currentNavigationIndex = index
-                        },
-                        icon = {
-                            Icon(imageVector = navigationItem.icon, contentDescription = null)
-                        },
-                        label = {
-                            Text(text = navigationItem.title)
-                        },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Color(0xFF149EE7),
-                            selectedTextColor = Color(0xFF149EE7),
-                            unselectedIconColor = Color(0xFF999999),
-                            unselectedTextColor = Color(0xFF999999),
-                            indicatorColor = Color.White
+    ProvideWindowInsets {
+        Scaffold(
+            bottomBar = {
+                NavigationBar(
+                    containerColor = Color.White,
+                    modifier = Modifier.navigationBarsPadding()
+                ) {
+                    navigationItems.forEachIndexed { index, navigationItem ->
+                        NavigationBarItem(
+                            selected = currentNavigationIndex == index,
+                            onClick = {
+                                currentNavigationIndex = index
+                            },
+                            icon = {
+                                Icon(imageVector = navigationItem.icon, contentDescription = null)
+                            },
+                            label = {
+                                Text(text = navigationItem.title)
+                            },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedIconColor = Blue700,
+                                selectedTextColor = Blue700,
+                                unselectedIconColor = contentColor,
+                                unselectedTextColor = contentColor,
+                                indicatorColor = Color.White
+                            )
                         )
-                    )
+                    }
                 }
             }
+        ) {
+            when(currentNavigationIndex){
+                0 -> StudyScreen()
+                1 -> TaskScreen()
+                2 -> MineScreen()
+            }
         }
-    ) {
-        Text(text = "current navigation item: $currentNavigationIndex")
     }
+
 }
 
 @Preview(name = "MainFrame")
