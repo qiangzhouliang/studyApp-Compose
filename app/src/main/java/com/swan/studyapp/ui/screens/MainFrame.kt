@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.swan.studyapp.model.entity.NavigationItem
-import com.swan.studyapp.ui.theme.contentColor
+import com.swan.studyapp.ui.theme.gray900
 import com.swan.studyapp.ui.theme.Blue700
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,8 +59,8 @@ fun MainFrame() {
                             colors = NavigationBarItemDefaults.colors(
                                 selectedIconColor = Blue700,
                                 selectedTextColor = Blue700,
-                                unselectedIconColor = contentColor,
-                                unselectedTextColor = contentColor,
+                                unselectedIconColor = gray900,
+                                unselectedTextColor = gray900,
                                 indicatorColor = Color.White
                             )
                         )
