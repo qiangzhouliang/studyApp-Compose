@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.swan.studyapp.model.entity.Category
 import com.swan.studyapp.model.entity.DataType
+import com.swan.studyapp.model.entity.SwiperEntity
 
 class MainViewModel : ViewModel() {
 
@@ -81,12 +82,16 @@ class MainViewModel : ViewModel() {
     }
 
     //轮播图数据
-    //var swiperData by mutableStateOf(
-    //    listOf(
-    //        SwiperEntity("https://docs.bughub.icu/compose/assets/banner5.jpg")
-    //    )
-    //)
-    //    private set
+    var swiperData by mutableStateOf(
+        listOf(
+            SwiperEntity("https://img0.baidu.com/it/u=501558154,2179992071&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1683478800&t=5ba6804ac99a636236f9010851a34f7a"),
+            SwiperEntity("https://img2.baidu.com/it/u=3392420875,1412947139&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1683478800&t=31af96b501aec561ebc5c13c1f8e60c6"),
+            SwiperEntity("https://img1.baidu.com/it/u=3905587923,1551975743&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1683478800&t=b9cab01d61f66b18ad959f5978069d1c"),
+            SwiperEntity("https://t7.baidu.com/it/u=2420942434,2938556987&fm=218&app=126&size=f242,150&n=0&f=JPEG&fmt=auto?s=329630C8471309C832D0480D030070D3&sec=1683478800&t=a18002b8b784c6afd92afd4fe9562a04"),
+            SwiperEntity("https://t8.baidu.com/it/u=551153044,1906485926&fm=218&app=126&size=f242,150&n=0&f=JPEG&fmt=auto?s=F428BE57A8B25394BE30C1280300306F&sec=1683478800&t=03cd9d3a532664a42e8b0750a4f002b2"),
+        )
+    )
+        private set
 
     var swiperLoaded by mutableStateOf(false)
         private set
