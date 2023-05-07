@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
@@ -37,15 +39,21 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.pager.HorizontalPager
+import com.swan.studyapp.ui.compones.ArticleItem
 import com.swan.studyapp.ui.compones.NotificationContent
 import com.swan.studyapp.ui.compones.SwiperContent
 import com.swan.studyapp.ui.compones.TopAppBar
+import com.swan.studyapp.ui.compones.VideoItem
 import com.swan.studyapp.ui.theme.contentColor
+import com.swan.studyapp.viewModel.ArticleViewModel
 import com.swan.studyapp.viewModel.MainViewModel
+import com.swan.studyapp.viewModel.VideoViewModel
 
 @Composable
 fun StudyScreen(
     vm: MainViewModel = viewModel(),
+    articleViewModel: ArticleViewModel = viewModel(),
+    videoViewModel: VideoViewModel = viewModel(),
 ) {
     Column {
         // 标题栏
@@ -108,11 +116,41 @@ fun StudyScreen(
         //类型标签
         Types(vm)
 
-        // 轮播图
-        SwiperContent(vm)
+        LazyColumn{
+            // 轮播图
+            item { SwiperContent(vm) }
+            //通知公告
+            item { NotificationContent(vm) }
+            if (vm.showArticleList) {
+                //文章列表
+                items(articleViewModel.list) { article ->
+                    ArticleItem(
+                        article,
+                        articleViewModel.listLoaded,
+                        modifier = Modifier.clickable {
+                            //onNavigateToArticle()
+                        })
+                }
+            } else {
+                //视频列表
+                items(videoViewModel.list) { videoEntity ->
+                    VideoItem(modifier = Modifier.clickable {
+                        //onNavigateToVideo()
+                    }, videoEntity, videoViewModel.listLoaded)
+                }
+            }
 
-        //通知公告
-        NotificationContent(vm)
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
 

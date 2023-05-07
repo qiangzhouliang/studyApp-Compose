@@ -1,7 +1,9 @@
 package com.swan.studyapp.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
@@ -68,10 +70,12 @@ fun MainFrame() {
                 }
             }
         ) {
-            when(currentNavigationIndex){
-                0 -> StudyScreen()
-                1 -> TaskScreen()
-                2 -> MineScreen()
+            Box(modifier = Modifier.padding(bottom = it.calculateBottomPadding())){
+                when(currentNavigationIndex){
+                    0 -> StudyScreen()
+                    1 -> TaskScreen()
+                    2 -> MineScreen()
+                }
             }
         }
     }
