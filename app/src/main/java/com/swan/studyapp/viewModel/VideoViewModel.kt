@@ -102,10 +102,10 @@ class VideoViewModel : ViewModel() {
     }
 */
 
-    var videoUrl by mutableStateOf("")
+    var videoUrl by mutableStateOf("https://vd4.bdstatic.com/mda-pe68dvegaixc65y7/cae_h264/1683512545227443587/mda-pe68dvegaixc65y7.mp4")
         private set
 
-    var coverUrl by mutableStateOf("")
+    var coverUrl by mutableStateOf("https://img2.baidu.com/it/u=3392420875,1412947139&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1683651600&t=c90550abf1c4ebe56133418896461b11")
         private set
 
     private var videoTitle by mutableStateOf("习近平@战“疫”一线的这些群体：你们为疫")

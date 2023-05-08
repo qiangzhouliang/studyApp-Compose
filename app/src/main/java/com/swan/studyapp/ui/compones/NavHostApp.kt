@@ -13,6 +13,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.swan.studyapp.ui.navigation.Destinations
 import com.swan.studyapp.ui.screens.ArticleDetailScreen
 import com.swan.studyapp.ui.screens.MainFrame
+import com.swan.studyapp.ui.screens.VideoDetailScreen
 
 
 /**
@@ -81,9 +82,9 @@ fun NavHostApp() {
                 slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
             },
         ) {
-            //VideoDetailScreen(onBack = {
-            //    navController.popBackStack()
-            //})
+            VideoDetailScreen(onBack = {
+                navController.popBackStack()
+            })
         }
 
         composable(

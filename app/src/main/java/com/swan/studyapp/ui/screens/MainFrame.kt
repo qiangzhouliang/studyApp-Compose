@@ -73,7 +73,11 @@ fun MainFrame(
     ) {
         Box(modifier = Modifier.padding(bottom = it.calculateBottomPadding())){
             when(currentNavigationIndex){
-                0 -> StudyScreen(onNavigateToArticle = onNavigateToArticle)
+                0 -> StudyScreen(
+                    onNavigateToArticle = onNavigateToArticle,
+                    onNavigateToVideo = onNavigateToVideo,
+                    onNavigateToStudyHistory = onNavigateToStudyHistory
+                )
                 1 -> TaskScreen()
                 2 -> MineScreen()
             }

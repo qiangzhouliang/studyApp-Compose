@@ -128,7 +128,7 @@ fun StudyScreen(
                 //视频列表
                 items(videoViewModel.list) { videoEntity ->
                     VideoItem(modifier = Modifier.clickable {
-                        //onNavigateToVideo()
+                        onNavigateToVideo()
                     }, videoEntity, videoViewModel.listLoaded)
                 }
             }
