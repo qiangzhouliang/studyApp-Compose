@@ -23,7 +23,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.google.accompanist.insets.ProvideWindowInsets
 import com.swan.studyapp.model.entity.NavigationItem
 import com.swan.studyapp.ui.theme.gray900
 import com.swan.studyapp.ui.theme.Blue700
@@ -42,48 +41,44 @@ fun MainFrame(
         NavigationItem("我的", Icons.Filled.Person)
     )
     var currentNavigationIndex by remember { mutableStateOf(0) }
-
-    ProvideWindowInsets {
-        Scaffold(
-            bottomBar = {
-                NavigationBar(
-                    containerColor = Color.White,
-                    modifier = Modifier.navigationBarsPadding()
-                ) {
-                    navigationItems.forEachIndexed { index, navigationItem ->
-                        NavigationBarItem(
-                            selected = currentNavigationIndex == index,
-                            onClick = {
-                                currentNavigationIndex = index
-                            },
-                            icon = {
-                                Icon(imageVector = navigationItem.icon, contentDescription = null)
-                            },
-                            label = {
-                                Text(text = navigationItem.title)
-                            },
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Blue700,
-                                selectedTextColor = Blue700,
-                                unselectedIconColor = gray900,
-                                unselectedTextColor = gray900,
-                                indicatorColor = Color.White
-                            )
+    Scaffold(
+        bottomBar = {
+            NavigationBar(
+                containerColor = Color.White,
+                modifier = Modifier.navigationBarsPadding()
+            ) {
+                navigationItems.forEachIndexed { index, navigationItem ->
+                    NavigationBarItem(
+                        selected = currentNavigationIndex == index,
+                        onClick = {
+                            currentNavigationIndex = index
+                        },
+                        icon = {
+                            Icon(imageVector = navigationItem.icon, contentDescription = null)
+                        },
+                        label = {
+                            Text(text = navigationItem.title)
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Blue700,
+                            selectedTextColor = Blue700,
+                            unselectedIconColor = gray900,
+                            unselectedTextColor = gray900,
+                            indicatorColor = Color.White
                         )
-                    }
-                }
-            }
-        ) {
-            Box(modifier = Modifier.padding(bottom = it.calculateBottomPadding())){
-                when(currentNavigationIndex){
-                    0 -> StudyScreen(onNavigateToArticle = onNavigateToArticle)
-                    1 -> TaskScreen()
-                    2 -> MineScreen()
+                    )
                 }
             }
         }
+    ) {
+        Box(modifier = Modifier.padding(bottom = it.calculateBottomPadding())){
+            when(currentNavigationIndex){
+                0 -> StudyScreen(onNavigateToArticle = onNavigateToArticle)
+                1 -> TaskScreen()
+                2 -> MineScreen()
+            }
+        }
     }
-
 }
 
 @Preview(name = "MainFrame")

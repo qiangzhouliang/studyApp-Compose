@@ -153,15 +153,15 @@ class ArticleViewModel : ViewModel() {
     var infoLoaded by mutableStateOf(false)
         private set
 
-    /*suspend fun fetchInfo() {
-        val res = articleService.info("")
-        if (res.code == 0 && res.data != null) {
-            articleEntity = res.data
-            content = """$htmlHeader
-                            ${articleEntity?.content ?: ""}
-                            $htmlFooter
-                        """.trimIndent()
-            infoLoaded = true
-        }
-    }*/
+    //suspend fun fetchInfo() {
+    //    val res = articleService.info("")
+    //    if (res.code == 0 && res.data != null) {
+    //        articleEntity = res.data
+    //        content = """$htmlHeader
+    //                        ${articleEntity?.content ?: ""}
+    //                        $htmlFooter
+    //                    """.trimIndent()
+    //        infoLoaded = true
+    //    }
+    //}
 }

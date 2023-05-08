@@ -4,6 +4,7 @@ package com.swan.studyapp.ui.compones
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -19,6 +20,8 @@ import com.swan.studyapp.ui.theme.Blue700
 
 //标题栏高度
 val appBarHeight = 56.dp
+
+val topBarBg = Brush.linearGradient(listOf(Blue700, Blue200))
 
 /**
  * 统一标题栏
@@ -44,7 +47,7 @@ fun TopAppBar(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Brush.linearGradient(listOf(Blue700, Blue200))) // 背景颜色线性渐变
+            .background(topBarBg) // 背景颜色线性渐变
             .height(appBarHeight + statusBarHeightDp)
             .padding(top = statusBarHeightDp)
             .then(modifier),
