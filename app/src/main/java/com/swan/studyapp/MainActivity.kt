@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
+import com.swan.studyapp.ui.compones.NavHostApp
 import com.swan.studyapp.ui.screens.MainFrame
 import com.swan.studyapp.ui.theme.StudyAppTheme
 
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainFrame()
+                    NavHostApp()
                 }
             }
         }

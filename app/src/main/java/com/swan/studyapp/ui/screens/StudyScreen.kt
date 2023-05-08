@@ -1,14 +1,9 @@
 package com.swan.studyapp.ui.screens
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -29,16 +24,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.Key.Companion.H
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.AsyncImage
-import coil.compose.rememberAsyncImagePainter
-import com.google.accompanist.pager.HorizontalPager
 import com.swan.studyapp.ui.compones.ArticleItem
 import com.swan.studyapp.ui.compones.NotificationContent
 import com.swan.studyapp.ui.compones.SwiperContent
@@ -54,6 +44,9 @@ fun StudyScreen(
     vm: MainViewModel = viewModel(),
     articleViewModel: ArticleViewModel = viewModel(),
     videoViewModel: VideoViewModel = viewModel(),
+    onNavigateToArticle: () -> Unit = {},
+    onNavigateToVideo: () -> Unit = {},
+    onNavigateToStudyHistory: () -> Unit = {}
 ) {
     Column {
         // 标题栏
@@ -128,7 +121,7 @@ fun StudyScreen(
                         article,
                         articleViewModel.listLoaded,
                         modifier = Modifier.clickable {
-                            //onNavigateToArticle()
+                            onNavigateToArticle()
                         })
                 }
             } else {
@@ -141,16 +134,6 @@ fun StudyScreen(
             }
 
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
 

@@ -31,7 +31,11 @@ import com.swan.studyapp.ui.theme.Blue700
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainFrame() {
+fun MainFrame(
+    onNavigateToArticle: () -> Unit = {},
+    onNavigateToVideo: () -> Unit = {},
+    onNavigateToStudyHistory: () -> Unit = {}
+) {
     val navigationItems = listOf(
         NavigationItem("学习", Icons.Filled.Home),
         NavigationItem("任务", Icons.Filled.DateRange),
@@ -72,7 +76,7 @@ fun MainFrame() {
         ) {
             Box(modifier = Modifier.padding(bottom = it.calculateBottomPadding())){
                 when(currentNavigationIndex){
-                    0 -> StudyScreen()
+                    0 -> StudyScreen(onNavigateToArticle = onNavigateToArticle)
                     1 -> TaskScreen()
                     2 -> MineScreen()
                 }
