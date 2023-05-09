@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
@@ -138,7 +139,12 @@ fun ArticleDetailScreen(articleViewModel: ArticleViewModel = viewModel(), onBack
         },
         sheetPeekHeight = 0.dp
     ) {
-        WebView(state = webViewState)
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            WebView(webViewState)
+            if (!articleViewModel.infoLoaded) {
+                CircularProgressIndicator()
+            }
+        }
     }
 }
 

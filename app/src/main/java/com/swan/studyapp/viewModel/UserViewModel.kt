@@ -57,10 +57,12 @@ class UserViewModel(context: Context) : ViewModel() {
     suspend fun login(onClose: () -> Unit) {
         error = ""
         loading = true
+        userName = "18600000000"
+        password = "123456"
         // userName 18600000000
-        // password e10adc3949ba59abbe56e057f20f883e
-        //val res = userService.signIn(userName, md5(password))
-        val res = userService.signIn("18600000000", "e10adc3949ba59abbe56e057f20f883e")
+        // password e10adc3949ba59abbe56e057f20f883e 或 123456
+        val res = userService.signIn(userName, md5(password))
+        //val res = userService.signIn("18600000000", "e10adc3949ba59abbe56e057f20f883e")
         if (res.code == 0 && res.data != null) {
             userInfo = res.data
             userInfoManager.save(userInfo?.userName ?: "")
