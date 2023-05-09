@@ -10,6 +10,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.placeholder.PlaceholderHighlight
+import com.google.accompanist.placeholder.material.shimmer
+import com.google.accompanist.placeholder.placeholder
 import com.swan.studyapp.model.entity.ArticleEntity
 
 
@@ -31,7 +34,7 @@ fun ArticleItem(article: ArticleEntity, loaded: Boolean, modifier: Modifier = Mo
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .padding(bottom = 8.dp)
-                //.placeholder(visible = !loaded, highlight = PlaceholderHighlight.shimmer())
+                .placeholder(visible = !loaded, highlight = PlaceholderHighlight.shimmer(), color = Color.LightGray)
         )
 
         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
@@ -42,7 +45,7 @@ fun ArticleItem(article: ArticleEntity, loaded: Boolean, modifier: Modifier = Mo
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
-                    //.placeholder(visible = !loaded, highlight = PlaceholderHighlight.shimmer())
+                    .placeholder(visible = !loaded, highlight = PlaceholderHighlight.shimmer(), color = Color.LightGray)
             )
 
             Text(
@@ -52,7 +55,7 @@ fun ArticleItem(article: ArticleEntity, loaded: Boolean, modifier: Modifier = Mo
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
-                    //.placeholder(visible = !loaded, highlight = PlaceholderHighlight.shimmer())
+                    .placeholder(visible = !loaded, highlight = PlaceholderHighlight.shimmer(), color = Color.LightGray)
             )
         }
 

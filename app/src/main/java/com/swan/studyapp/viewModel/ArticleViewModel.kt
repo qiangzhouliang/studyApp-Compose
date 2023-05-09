@@ -7,13 +7,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.swan.studyapp.model.entity.ArticleEntity
+import com.swan.studyapp.model.service.ArticleService
 //import icu.bughub.app.app.model.entity.ArticleEntity
 //import icu.bughub.app.app.model.service.ArticleService
 import kotlinx.coroutines.delay
 
 class ArticleViewModel : ViewModel() {
 
-    //private val articleService = ArticleService.instance()
+    private val articleService = ArticleService.instance()
 
     private val pageSize = 10
     private var pageOffset = 1
@@ -78,7 +79,7 @@ class ArticleViewModel : ViewModel() {
     //是否还有更多
     private var hasMore = false
 
-    /*suspend fun fetchArticleList() {
+    suspend fun fetchArticleList() {
         val res = articleService.list(pageOffset = pageOffset, pageSize = pageSize)
         if (res.code == 0 && res.data != null) {
             val tmpList = mutableListOf<ArticleEntity>()
@@ -97,13 +98,13 @@ class ArticleViewModel : ViewModel() {
                 pageOffset = 1
             }
         }
-    }*/
+    }
 
     /**
      * 下拉刷新
      *
      */
-    /*suspend fun refresh() {
+    suspend fun refresh() {
         pageOffset = 1
 //        listLoaded = false
         refreshing = true
@@ -115,7 +116,7 @@ class ArticleViewModel : ViewModel() {
             pageOffset++
             fetchArticleList()
         }
-    }*/
+    }
 
     //HTML 头部
     private val htmlHeader = """
@@ -153,15 +154,15 @@ class ArticleViewModel : ViewModel() {
     var infoLoaded by mutableStateOf(false)
         private set
 
-    //suspend fun fetchInfo() {
-    //    val res = articleService.info("")
-    //    if (res.code == 0 && res.data != null) {
-    //        articleEntity = res.data
-    //        content = """$htmlHeader
-    //                        ${articleEntity?.content ?: ""}
-    //                        $htmlFooter
-    //                    """.trimIndent()
-    //        infoLoaded = true
-    //    }
-    //}
+    suspend fun fetchInfo() {
+        val res = articleService.info("")
+        if (res.code == 0 && res.data != null) {
+            articleEntity = res.data
+            content = """$htmlHeader
+                            ${articleEntity?.content ?: ""}
+                            $htmlFooter
+                        """.trimIndent()
+            infoLoaded = true
+        }
+    }
 }

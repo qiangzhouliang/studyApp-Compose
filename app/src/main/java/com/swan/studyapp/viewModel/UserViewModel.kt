@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.swan.studyapp.model.entity.UserInfoEntity
 import com.swan.studyapp.model.service.UserInfoManager
+import com.swan.studyapp.model.service.UserService
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import java.security.MessageDigest
@@ -15,7 +16,7 @@ import java.security.MessageDigest
 class UserViewModel(context: Context) : ViewModel() {
 
     private val userInfoManager = UserInfoManager(context)
-    //private val userService = UserService.instance()
+    private val userService = UserService.instance()
 
     var userName by mutableStateOf("")
 
@@ -56,15 +57,18 @@ class UserViewModel(context: Context) : ViewModel() {
     suspend fun login(onClose: () -> Unit) {
         error = ""
         loading = true
+        // userName 18600000000
+        // password e10adc3949ba59abbe56e057f20f883e
         //val res = userService.signIn(userName, md5(password))
-        //if (res.code == 0 && res.data != null) {
-        //    userInfo = res.data
-        //    userInfoManager.save(userName)
-        //    onClose()
-        //} else {
-        //    //失败
-        //    error = res.message
-        //}
+        val res = userService.signIn("18600000000", "e10adc3949ba59abbe56e057f20f883e")
+        if (res.code == 0 && res.data != null) {
+            userInfo = res.data
+            userInfoManager.save(userInfo?.userName ?: "")
+            onClose()
+        } else {
+            //失败
+            error = res.message
+        }
         loading = false
     }
 

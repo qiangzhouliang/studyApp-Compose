@@ -32,12 +32,12 @@ import kotlinx.coroutines.launch
 @Composable
 fun ArticleDetailScreen(articleViewModel: ArticleViewModel = viewModel(), onBack: () -> Unit) {
 
-    //LaunchedEffect(Unit) {
-    //    articleViewModel.fetchInfo()
-    //}
+    LaunchedEffect(Unit) {
+        articleViewModel.fetchInfo()
+    }
 
-    //val webViewState = rememberWebViewState(data = articleViewModel.content)
-    val webViewState = rememberWebViewState(url = "https://www.baidu.com")
+    val webViewState = rememberWebViewState(data = articleViewModel.content)
+    //val webViewState = rememberWebViewState(url = "https://www.baidu.com")
 
     var fontScale by remember {
         mutableStateOf(1.0f)

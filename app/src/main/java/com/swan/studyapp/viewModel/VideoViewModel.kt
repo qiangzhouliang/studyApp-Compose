@@ -5,10 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.swan.studyapp.model.entity.VideoEntity
+import com.swan.studyapp.model.service.VideoService
 
 class VideoViewModel : ViewModel() {
 
-    //private val videoService = VideoService.instance()
+    private val videoService = VideoService.instance()
 
     var list by mutableStateOf(
         listOf(
@@ -73,7 +74,7 @@ class VideoViewModel : ViewModel() {
     var listLoaded by mutableStateOf(false)
         private set
 
-    /*suspend fun fetchList() {
+    suspend fun fetchList() {
         val res = videoService.list(pageOffset, pageSize)
         if (res.code == 0 && res.data != null) {
             val tmpList = mutableListOf<VideoEntity>()
@@ -86,9 +87,9 @@ class VideoViewModel : ViewModel() {
             refreshing = false
             listLoaded = true
         }
-    }*/
+    }
 
-    /*suspend fun refresh() {
+    suspend fun refresh() {
         pageOffset = 1
         refreshing = true
         fetchList()
@@ -100,7 +101,7 @@ class VideoViewModel : ViewModel() {
             fetchList()
         }
     }
-*/
+
 
     var videoUrl by mutableStateOf("https://vd4.bdstatic.com/mda-pe68dvegaixc65y7/cae_h264/1683512545227443587/mda-pe68dvegaixc65y7.mp4")
         private set
@@ -143,7 +144,7 @@ class VideoViewModel : ViewModel() {
     var infoLoaded by mutableStateOf(false)
         private set
 
-    /*suspend fun fetchInfo() {
+    suspend fun fetchInfo() {
         val res = videoService.info("")
         if (res.code == 0 && res.data != null) {
             val videoEntity = res.data
@@ -163,6 +164,6 @@ class VideoViewModel : ViewModel() {
             infoLoaded = true
         }
 
-    }*/
+    }
 
 }

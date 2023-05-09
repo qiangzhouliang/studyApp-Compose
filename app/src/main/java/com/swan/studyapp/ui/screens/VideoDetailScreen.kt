@@ -36,7 +36,7 @@ fun VideoDetailScreen(videoViewModel: VideoViewModel = viewModel(), onBack: () -
     val systemUiController = rememberSystemUiController()
 
     LaunchedEffect(Unit) {
-        //videoViewModel.fetchInfo()
+        videoViewModel.fetchInfo()
     }
 
     val webViewState = rememberWebViewState(data = videoViewModel.videoDesc)
@@ -87,7 +87,7 @@ fun VideoDetailScreen(videoViewModel: VideoViewModel = viewModel(), onBack: () -
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(it), contentAlignment = Alignment.Center) {
-            if (!videoViewModel.infoLoaded) {
+            if (videoViewModel.infoLoaded) {
                 Column(modifier = Modifier.fillMaxSize()) {
                     val vodController =
                         rememberVodController(

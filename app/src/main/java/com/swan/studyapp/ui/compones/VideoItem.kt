@@ -76,9 +76,9 @@ fun VideoItem(modifier: Modifier = Modifier, videoEntity: VideoEntity, loaded: B
                 .layoutId("cover")
                 .aspectRatio(16 / 9f)
                 .clip(RoundedCornerShape(8.dp))
-                //.placeholder(
-                //    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
-                //)
+                .placeholder(
+                    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
+                )
         )
 
         Text(
@@ -89,9 +89,9 @@ fun VideoItem(modifier: Modifier = Modifier, videoEntity: VideoEntity, loaded: B
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .layoutId("title")
-                //.placeholder(
-                //    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
-                //)
+                .placeholder(
+                    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
+                )
         )
 
         Text(
@@ -102,9 +102,9 @@ fun VideoItem(modifier: Modifier = Modifier, videoEntity: VideoEntity, loaded: B
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .layoutId("type")
-                //.placeholder(
-                //    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
-                //)
+                .placeholder(
+                    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
+                )
         )
 
         Text(
@@ -115,9 +115,9 @@ fun VideoItem(modifier: Modifier = Modifier, videoEntity: VideoEntity, loaded: B
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .layoutId("duration")
-                //.placeholder(
-                //    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
-                //)
+                .placeholder(
+                    visible = !loaded, highlight = PlaceholderHighlight.shimmer()
+                )
         )
 
         Divider(

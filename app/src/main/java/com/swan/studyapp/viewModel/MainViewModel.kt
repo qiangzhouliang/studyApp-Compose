@@ -10,10 +10,11 @@ import androidx.lifecycle.ViewModel
 import com.swan.studyapp.model.entity.Category
 import com.swan.studyapp.model.entity.DataType
 import com.swan.studyapp.model.entity.SwiperEntity
+import com.swan.studyapp.model.service.HomeService
 
 class MainViewModel : ViewModel() {
 
-    //private val homeService = HomeService.instance()
+    private val homeService = HomeService.instance()
 
     //分类数据是否加载成功
     var categoryLoaded by mutableStateOf(false)
@@ -30,16 +31,16 @@ class MainViewModel : ViewModel() {
     )
         private set
 
-    //suspend fun categoryData() {
-    //    val categoryRes = homeService.category()
-    //    if (categoryRes.code == 0) {
-    //        categories = categoryRes.data
-    //        categoryLoaded = true
-    //    } else {
-    //        //不成功的情况下，读取 message
-    //        val message = categoryRes.message
-    //    }
-    //}
+    suspend fun categoryData() {
+        val categoryRes = homeService.category()
+        if (categoryRes.code == 0) {
+            categories = categoryRes.data
+            categoryLoaded = true
+        } else {
+            //不成功的情况下，读取 message
+            val message = categoryRes.message
+        }
+    }
 
     //当前分类下标
     var categoryIndex by mutableStateOf(0)
@@ -96,15 +97,15 @@ class MainViewModel : ViewModel() {
     var swiperLoaded by mutableStateOf(false)
         private set
 
-    //suspend fun swiperData() {
-    //    val swiperRes = homeService.banner()
-    //    if (swiperRes.code == 0 && swiperRes.data != null) {
-    //        swiperData = swiperRes.data
-    //        swiperLoaded = true
-    //    } else {
-    //        val message = swiperRes.message
-    //    }
-    //}
+    suspend fun swiperData() {
+        val swiperRes = homeService.banner()
+        if (swiperRes.code == 0 && swiperRes.data != null) {
+            swiperData = swiperRes.data
+            swiperLoaded = true
+        } else {
+            val message = swiperRes.message
+        }
+    }
 
     //通知数据
     val notifications =

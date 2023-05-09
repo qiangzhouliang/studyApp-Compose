@@ -1,5 +1,6 @@
 package com.swan.studyapp.ui.screens
 
+import android.view.MenuItem
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,8 +31,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.swan.studyapp.R
+import com.swan.studyapp.compositionLocal.LocalUserViewModel
 import com.swan.studyapp.ui.compones.TopAppBar
+import com.swan.studyapp.viewModel.UserViewModel
 
 @Composable
 fun MineScreen() {
@@ -44,6 +48,8 @@ fun MineScreen() {
         MenuItem(R.drawable.version, "版本信息"),
         MenuItem(R.drawable.settings, "个人设置")
     )
+
+    val userViewModel = LocalUserViewModel.current
 
     Column {
         TopAppBar() {
@@ -70,7 +76,7 @@ fun MineScreen() {
                             .padding(horizontal = 8.dp)
                             .height(62.dp)
                     ) {
-                        Text(text = "未登录", color = Color(0xFF333333), fontSize = 18.sp)
+                        Text(text = if (userViewModel.logged) userViewModel.userInfo?.userName ?: "默认用户名" else "未登录", color = Color(0xFF333333), fontSize = 18.sp)
                         Text(text = "已坚持学习0天", color = Color(0xFF999999), fontSize = 12.sp)
                     }
                 }
