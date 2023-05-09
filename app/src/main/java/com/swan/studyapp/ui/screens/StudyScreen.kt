@@ -87,7 +87,7 @@ fun StudyScreen(
                 fontSize = 10.sp,
                 color = Color.White,
                 modifier = Modifier.clickable {
-                    //onNavigateToStudyHistory()
+                    onNavigateToStudyHistory()
                 })
 
             Spacer(modifier = Modifier.width(8.dp))
